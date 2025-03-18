@@ -1,0 +1,40 @@
+{
+	"type": "module",
+	"scripts": {
+		"build": "tsc --build",
+		"mikro-orm": "mikro-orm-esm",
+		"migration:create": "mikro-orm-esm migration:create",
+		"migration:up": "mikro-orm-esm migration:up",
+		"dev": "dotenvx run -f .env.dev -- nodemon -e ts -x 'pnpm run build && pnpm run dev:start'",
+		"dev:start": "node ./.dist/src/main.js"
+	},
+	"devDependencies": {
+		"@mikro-orm/cli": "^6.4.7",
+		"@types/node": "^22.13.5",
+		"@types/ws": "^8.5.14",
+		"nodemon": "^3.1.9",
+		"typescript": "^5.7.3",
+		"vitest": "^3.0.6"
+	},
+	"dependencies": {
+		"@dotenvx/dotenvx": "^1.38.2",
+		"@fastify/cors": "^11.0.0",
+		"@fastify/request-context": "^6.0.2",
+		"@fastify/swagger": "^9.4.2",
+		"@fastify/swagger-ui": "^5.2.2",
+		"@fastify/websocket": "^11.0.2",
+		"@mikro-orm/core": "^6.4.7",
+		"@mikro-orm/migrations": "^6.4.7",
+		"@mikro-orm/postgresql": "^6.4.7",
+		"@mikro-orm/reflection": "^6.4.7",
+		"@node-rs/argon2": "^2.0.2",
+		"fastify": "^5.2.1",
+		"fastify-type-provider-zod": "^4.0.2",
+		"ioredis": "^5.5.0",
+		"jsonwebtoken": "^9.0.2",
+		"nanoid": "^5.1.2",
+		"ts-morph": "^25.0.1",
+		"ts-node": "^10.9.2",
+		"zod": "^3.24.2"
+	}
+}
