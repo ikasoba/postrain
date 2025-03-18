@@ -1,0 +1,50 @@
+.bubbleBounce {
+  animation: 0.5s linear 1 running bubble-bounce;
+}
+
+.bubbleContent {
+  border: solid 2px lightgray;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+}
+
+.bubble {
+  width: fit-content;
+  min-width: 8rem;
+}
+
+.bubble::after {
+  position: relative;
+  display: block;
+  top: calc(-0.5rem - 5px);
+  left: calc(100% - 2.25rem);
+  content: '';
+  width: 1.5rem;
+  height: 1.5rem;
+  background: linear-gradient(45deg, white 50%, transparent 50% 100%);
+  border-top: solid 0px transparent;
+  border-right: solid 0px transparent;
+  border-left: solid 2px lightgray;
+  border-bottom: solid 2px lightgray;
+  border-bottom-left-radius: 0.3rem;
+  transform: rotate(-45deg);
+}
+
+@keyframes bubble-bounce {
+  0% {
+    transform: translate(0px, 50%) scale(1.25, 0.15);
+  }
+
+  30% {
+    transform: translate(0px, -12.5%) scale(0.5, 1.25);
+  }
+
+  50% {
+    transform: translate(0px, 0%) scale(1, 1);
+  }
+
+  100% {
+    transform: translate(0px, 0%) scale(1, 1);
+  }
+}

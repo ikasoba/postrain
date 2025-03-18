@@ -1,0 +1,8 @@
+.maxLengthCircle {
+  display: block;
+  width: 2rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+
+  background: red;
+}
