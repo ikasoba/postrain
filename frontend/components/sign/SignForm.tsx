@@ -1,3 +1,5 @@
+"use client";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../form/input";
 import { Button } from "../form/button";
@@ -10,7 +12,7 @@ export interface SignFormData {
   password: string;
 }
 
-export function SignForm() {
+export function SignForm({ isInviteCodeRequired }: { isInviteCodeRequired: boolean; }) {
   const router = useRouter();
   const { handleSubmit, register, formState: { isValid, errors } } = useForm<SignFormData>();
 
@@ -47,7 +49,7 @@ export function SignForm() {
 
   return (
     <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
-      <Input placeholder="invite code" type="text" autoComplete="off" {...register("inviteCode", { required: false })} />
+      { isInviteCodeRequired ? <Input placeholder="invite code" type="text" autoComplete="off" {...register("inviteCode", { required: false })} /> : null }
       <Input placeholder="username" type="text" {...register("username", { required: true })} />
       <Input placeholder="password" type="password" {...register("password", { required: true })} />
       <Button disabled={!isValid}>登録</Button>

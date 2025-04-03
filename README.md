@@ -27,3 +27,9 @@ cd frontend
 pnpm i
 pnpm run dev
 ```
+
+### 招待コードについて
+
+デフォルトではサインインに招待コードが必須となっており、初回起動時にユーザーの作成ができないことがあります。
+
+これはバックエンドの設定で挙動を変更することができ、サインインに招待コードを不要とするには `backend/.config.dev.json` の `sign.isInviteCodeRequired` を `false` へ変更する必要があります。
