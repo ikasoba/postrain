@@ -15,7 +15,6 @@ export class UserService {
   ) { }
 
   async create(name: string, password: string, ipAddresses: string[] = [], inviteCode?: string): Promise<User | null> {
-    console.log(name,password, ipAddresses, inviteCode)
     if (this.config.get("sign.isInviteCodeRequired")) {
       if (!inviteCode) {
         return null

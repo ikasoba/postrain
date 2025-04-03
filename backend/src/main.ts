@@ -28,6 +28,8 @@ import { InviteService } from "./services/InviteService.js";
 import { Invite } from "./entities/invite.entity.js";
 import { ConfigService } from "./services/ConfigService.js";
 import { InviteController } from "./routes/invite.js";
+import { ConfigController } from "./routes/config.js";
+import { ApiConfigSchema } from "./views/config.js";
 
 async function router(): Promise<Router> {
   const app = fastify({
@@ -52,7 +54,8 @@ async function router(): Promise<Router> {
         User: ApiUserSchema,
         Post: ApiPostSchema,
         Session: ApiSessionSchema,
-        SessionWithCredential: ApiSessionWithCredentialSchema
+        SessionWithCredential: ApiSessionWithCredentialSchema,
+        Config: ApiConfigSchema,
       }
     })
   })
@@ -132,6 +135,8 @@ const wsController = new WebSocketController(notify);
 
 const inviteController = new InviteController(invites, sessionTokenMiddleware);
 
+const configController = new ConfigController(config);
+
 app.register(userController.register, {
   prefix: "/users"
 });
@@ -150,6 +155,10 @@ app.register(wsController.register, {
 
 app.register(inviteController.register, {
   prefix: "/invites"
+});
+
+app.register(configController.register, {
+  prefix: "/config"
 });
 
 app.listen({
